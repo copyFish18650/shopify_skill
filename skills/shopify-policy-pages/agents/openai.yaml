@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shopify 政策与独立页面设置"
+  short_description: "默认手动模式一次给齐政策文案与操作说明；自动模式填入保存，常规及精品标准独立选择"
+  default_prompt: "使用 $shopify-policy-pages，默认手动模式，沿用本会话已选的常规站或精品站标准，一次输出全部完整政策、服务页、Contact及页脚文案、链接映射和设置验收说明，由我复制粘贴；仅明确自动模式或连接并填入保存时才修改后台。"

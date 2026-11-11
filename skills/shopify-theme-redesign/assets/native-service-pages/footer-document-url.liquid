@@ -1,0 +1,75 @@
+{%- comment -%}Return only an existing published Page or nonempty native Policy URL.{%- endcomment -%}
+{%- assign service_url = '' -%}
+{%- assign service_now = "now" | date: "%s" | plus: 0 -%}
+{%- assign service_page = override_page | default: document.settings.page -%}
+{%- if service_page.url != blank and service_page.published_at != blank -%}
+  {%- assign service_published = service_page.published_at | date: "%s" | plus: 0 -%}
+  {%- if service_published <= service_now -%}{%- assign service_url = service_page.url -%}{%- endif -%}
+{%- endif -%}
+{%- assign service_handles = '' -%}
+{%- assign service_policy_slug = '' -%}
+{%- assign service_native = nil -%}
+{%- case document.settings.kind -%}
+{%- when 'about' -%}
+  {%- assign service_handles = 'about-us|about' | split: '|' -%}
+{%- when 'payment' -%}
+  {%- assign service_handles = 'payment-terms|payment' | split: '|' -%}
+{%- when 'size' -%}
+  {%- assign service_handles = 'product-guide|pet-tools-care|tools-product-guide|size-guide|tools-care|product-guides|size-care-guide' | split: '|' -%}
+{%- when 'tracking' -%}
+  {%- assign service_handles = 'order-tracking|track-order|tracking' | split: '|' -%}
+{%- when 'contact' -%}
+  {%- assign service_handles = 'contact|contact-us' | split: '|' -%}
+{%- when 'privacy_choices' -%}
+  {%- assign service_handles = 'privacy-choices|your-privacy-choices|data-sale-opt-out' | split: '|' -%}
+{%- when 'privacy' -%}
+  {%- assign service_handles = 'privacy-policy' | split: '|' -%}
+  {%- assign service_policy_slug = 'privacy-policy' -%}
+  {%- assign service_native = shop.privacy_policy -%}
+{%- when 'returns' -%}
+  {%- assign service_handles = 'refund-policy|return-refund-policy|return-and-refund-policy|returns' | split: '|' -%}
+  {%- assign service_policy_slug = 'refund-policy' -%}
+  {%- assign service_native = shop.refund_policy -%}
+{%- when 'shipping' -%}
+  {%- assign service_handles = 'shipping-policy' | split: '|' -%}
+  {%- assign service_policy_slug = 'shipping-policy' -%}
+  {%- assign service_native = shop.shipping_policy -%}
+{%- when 'after_sales' -%}
+  {%- assign service_handles = 'after-sales-support|after-sales|customer-support' | split: '|' -%}
+{%- when 'terms' -%}
+  {%- assign service_handles = 'terms-of-service' | split: '|' -%}
+  {%- assign service_policy_slug = 'terms-of-service' -%}
+  {%- assign service_native = shop.terms_of_service -%}
+{%- when 'contact_information' -%}
+  {%- assign service_handles = 'contact-information' | split: '|' -%}
+  {%- assign service_policy_slug = 'contact-information' -%}
+{%- when 'legal' -%}
+  {%- assign service_handles = 'legal-notice' | split: '|' -%}
+  {%- assign service_policy_slug = 'legal-notice' -%}
+{%- when 'sale_terms' -%}
+  {%- assign service_handles = 'terms-of-sale' | split: '|' -%}
+  {%- assign service_policy_slug = 'terms-of-sale' -%}
+{%- endcase -%}
+{%- if service_url == blank and document.settings.prefer_store -%}
+  {%- assign service_policy_text = service_native.body | strip_html | strip -%}
+  {%- if service_native.url != blank and service_policy_text != blank -%}{%- assign service_url = service_native.url -%}{%- endif -%}
+  {%- if service_url == blank and service_policy_slug != blank -%}
+    {%- for service_policy in shop.policies -%}
+      {%- assign service_policy_last = service_policy.url | split: "/" | last | split: "?" | first -%}
+      {%- assign service_policy_text = service_policy.body | strip_html | strip -%}
+      {%- if service_policy_last == service_policy_slug and service_policy_text != blank and service_policy.url != blank -%}
+        {%- assign service_url = service_policy.url -%}{%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if service_url == blank -%}
+  {%- for service_handle in service_handles -%}
+    {%- assign service_page = pages[service_handle] -%}
+    {%- if service_page.url != blank and service_page.published_at != blank -%}
+      {%- assign service_published = service_page.published_at | date: "%s" | plus: 0 -%}
+      {%- if service_published <= service_now -%}{%- assign service_url = service_page.url -%}{%- break -%}{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{{- service_url -}}

@@ -1,0 +1,15 @@
+/* Native Page presentation. All visual roles inherit from this store. */
+.service-page .service-page__content{max-width:74ch;margin-inline:auto;font-size:clamp(16px,15.5px + .12vw,18px);line-height:1.7;overflow-wrap:anywhere}
+.service-page .service-page__heading{margin:clamp(1.75rem,4vw,3.5rem) 0 2rem}
+.service-page .service-page__heading h1{font-size:clamp(2rem,4.2vw,3.75rem);line-height:1.08;letter-spacing:-.025em;text-wrap:balance;margin:0;overflow-wrap:anywhere}
+.service-page .service-page__content .service-page__body{font-size:inherit;line-height:inherit;color:inherit}
+.service-page .service-page__content .service-page__body :is(p,li,a,blockquote,table,thead,tbody,tfoot,tr,td,th,address,dt,dd){font-size:inherit;line-height:inherit;color:inherit}
+.service-page .service-page__body :is(h2,h3,h4){font-family:inherit;line-height:1.25;letter-spacing:normal;text-wrap:pretty;margin-top:2em;margin-bottom:.65em}
+.service-page .service-page__body h2{font-size:1.65em}.service-page .service-page__body h3{font-size:1.35em}.service-page .service-page__body h4{font-size:1.15em}
+.service-page .service-page__body p{margin-block:0 1.1em}.service-page .service-page__body :is(ul,ol){padding-inline-start:1.5em;margin-block:0 1.25em}
+.service-page .service-page__body a{text-decoration:underline;text-underline-offset:.18em;color:inherit}
+.service-page .service-page__body address{font-style:normal;line-height:1.7}.service-page .service-page__body img{max-width:100%;height:auto}
+.service-page .service-page__breadcrumb{font-size:.875rem;line-height:1.5;margin:0;display:flex;gap:.65rem;flex-wrap:wrap}
+.service-page .service-page__breadcrumb a{color:inherit;text-underline-offset:.18em}
+.service-page .service-page__body table{max-width:100%;display:block;overflow-x:auto;border-collapse:collapse}
+@media(max-width:749px){.service-page{padding-block:1.75rem 3.25rem}.service-page .service-page__heading{margin-top:1.75rem;margin-bottom:1.5rem}.service-page .service-page__content{width:100%}}

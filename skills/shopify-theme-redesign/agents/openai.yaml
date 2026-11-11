@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shopify 整站复刻与自主装修"
+  short_description: "基础站／精品站整站设计，跨站主图去重；保留原生购物与政策，交付 ZIP、CSV 和实际首页截图"
+  default_prompt: "使用 $shopify-theme-redesign，先核对内置三项设计技能；按品类和基础／精品标准完成整站，为各站规划不同的主视觉、布局、配色与交互，跨站查重全部轮播和关键营销图，验证原生功能后逐站交付主题 ZIP、商品 CSV 与实际首页截图。"

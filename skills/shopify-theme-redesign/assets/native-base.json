@@ -1,0 +1,151 @@
+{
+  "source": "Independently authored Stride Atelier native Shopify theme, revision 06",
+  "revision": "06",
+  "baseline_category": "footwear",
+  "date": "2026-11-05",
+  "sha256": "5272f195c6051f4f04e74f005481795da71f34795d92f9c879d2c9e0fa124277",
+  "bytes": 623455,
+  "files": 76,
+  "derived_from": {
+    "source": "Independently authored Stride Atelier native Shopify theme, revision 05",
+    "revision": "05",
+    "baseline_category": "footwear",
+    "date": "2026-11-04",
+    "sha256": "3001969b4075b9a8b85a77220c49d65ba7d7275c9c24561f9d9c67180ef62446",
+    "bytes": 623374,
+    "files": 76,
+    "derived_from": {
+      "source": "Independently authored Stride Atelier native Shopify theme, revision 04",
+      "revision": "04",
+      "date": "2026-10-26",
+      "sha256": "b70cd2ac63579fd06cd00484883ef528993ba911ac6402eab1b7d9a7d9f0a8ff",
+      "bytes": 623236,
+      "files": 76,
+      "scope": "Revision 03 footer files were saved and previewed in the existing Shopify draft. Revision 04 adds empty catalog slots and automatic categories verified locally; the revision 04 ZIP and a real CSV were not imported into Shopify during this update.",
+      "historical_verification": {
+        "local_behavior_checks": 79,
+        "local_test_scope": "52 existing behavior checks and 27 empty/post-import catalog-state checks with isolated Shopify-object fixtures and intercepted Cart API responses. Real product import, account login and payment were not verified.",
+        "native_observed_in_previous_revision": [
+          "Homepage before catalog enhancement",
+          "Footer group and section",
+          "All 14 service and policy entries",
+          "Shipping, after-sales and return/refund reading dialogs"
+        ]
+      }
+    },
+    "revision_changes": {
+      "patch_created": "2026-11-03",
+      "provenance_reconciled": "2026-11-04",
+      "scope": "Payment icon layout and Footer re-add defaults only. This records a reviewed existing patch; it does not invent new provenance for unreviewed file changes.",
+      "changed_entries": [
+        "assets/theme.css",
+        "sections/footer.liquid"
+      ],
+      "unchanged_entries": 74,
+      "footer_markup_identical_to_revision_04": true,
+      "footer_schema_change": "Only preset.settings.show_payments=true; defaults and all other settings unchanged",
+      "css_change": "Payment SVG48px desktop/44px mobile; flex wrapping; retain actual-payment native loop"
+    },
+    "verification": {
+      "date": "2026-11-04",
+      "crc_passed": true,
+      "eight_theme_roots": true,
+      "static_audit": {
+        "json_files": 24,
+        "liquid_schemas": 30,
+        "errors": 0,
+        "warnings": 0
+      },
+      "official_theme_check": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "unrelated_files_byte_identical_to_verified_revision_04": 74,
+      "prior_merchant_identity_scan": "No prior operator names, public contact records or addresses found in theme text files.",
+      "live_shopify_import_tested": false,
+      "limits": "File integrity and static verification of payment presentation patch; not a new live import, visual fidelity or payment-configuration test.",
+      "preparation_probe": {
+        "date": "2026-11-04",
+        "completed": true,
+        "announcement": "Neutral schema/preset/saved copy and disabled until explicitly promotion-ready",
+        "payment_icons": "Schema, preset and saved values all true; actual enabled_payment_types SVG loop unchanged",
+        "static_errors": 0,
+        "official_errors": 0,
+        "official_warnings": 0,
+        "live_import_tested": false
+      }
+    },
+    "default_empty_slots": {
+      "products": 8,
+      "categories": 4
+    },
+    "automatic_catalog_sources": [
+      "Visible All products",
+      "Populated native collections",
+      "Product Type native collections",
+      "All-products fallback"
+    ],
+    "scope": "Revision 05 preserves the independently authored revision 04 native scaffold and changes only the reviewed payment icon CSS and Footer preset. It remains a starting scaffold requiring current mode/category presentation, imagery, policies, identity, catalog and promotion adaptation.",
+    "adapt_before_delivery": [
+      "Category copy and guides",
+      "Policy terminology",
+      "Two distinct scene images and all responsive crops",
+      "Visual direction",
+      "Schema defaults/presets, saved JSON and locales"
+    ],
+    "is_official_theme": false,
+    "may_deliver_unchanged_for_a_new_category": false
+  },
+  "revision_changes": {
+    "date": "2026-11-05",
+    "changed_entries": [
+      "assets/theme.css"
+    ],
+    "unchanged_entries": 83,
+    "scope": "Improve compare-at text and placeholder opacity; use foreground as the fallback border for form controls. Decorative borders, settings, markup and native commerce behavior remain unchanged."
+  },
+  "verification": {
+    "crc_passed": true,
+    "unchanged_entries_byte_identical_to_revision_05": 83,
+    "live_shopify_import_tested": false,
+    "limits": "Component readability patch; does not prove whole-store visual quality, all custom schemes or live Shopify behavior.",
+    "date": "2026-11-05",
+    "static_audit": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "official_theme_check": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "preparation_probe": {
+      "completed": true,
+      "checksum_verified": true,
+      "static_passed": true,
+      "official_theme_check_errors": 0,
+      "official_theme_check_warnings": 0,
+      "live_import_tested": false
+    },
+    "representative_component_browser_check": "Three bundled schemes checked with current retail CSS; details in local work evidence. Custom palettes and live stores still require actual validation."
+  },
+  "scope": "Native function scaffold with readability fixes; use the current premium baseline or other selected presentation and current data before delivery.",
+  "default_empty_slots": {
+    "products": 8,
+    "categories": 4
+  },
+  "automatic_catalog_sources": [
+    "Visible All products",
+    "Populated native collections",
+    "Product Type native collections",
+    "All-products fallback"
+  ],
+  "adapt_before_delivery": [
+    "Category copy and guides",
+    "Policy terminology",
+    "Two distinct scene images and all responsive crops",
+    "Visual direction",
+    "Schema defaults/presets, saved JSON and locales"
+  ],
+  "is_official_theme": false,
+  "may_deliver_unchanged_for_a_new_category": false
+}

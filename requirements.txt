@@ -1,0 +1,3 @@
+# Optional: image-processing helpers in shopify-theme-redesign.
+# Installing the skills and using the other Python helpers needs no packages.
+Pillow>=10.0

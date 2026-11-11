@@ -1,0 +1,29 @@
+{% comment %}Real store collections, then product types. This does not create backend menus.{% endcomment %}
+{% capture existing_menu_urls %}|{% for menu_link in section.settings.menu.links %}{{ menu_link.url }}|{% for child_link in menu_link.links %}{{ child_link.url }}|{% for nested_link in child_link.links %}{{ nested_link.url }}|{% endfor %}{% endfor %}{% endfor %}{% endcapture %}
+{% if dedupe_menu == false %}{% assign existing_menu_urls = '' %}{% endif %}
+{% assign navigation_available = 0 %}{% assign navigation_shown = 0 %}{% assign navigation_product_count = collections.all.products_count | default:0 %}
+{% if section.settings.catalog_source == 'blocks' %}
+  {% for block in section.blocks %}{% if block.type == 'catalog_category' and navigation_shown < section.settings.catalog_limit %}
+    {% assign navigation_collection = block.settings.collection %}{% assign navigation_url = '' %}{% assign navigation_title = block.settings.label %}
+    {% if navigation_collection != blank and navigation_collection.products_count > 0 %}{% assign navigation_url = navigation_collection.url %}{% assign navigation_title = navigation_title | default: navigation_collection.title %}
+    {% elsif block.settings.product_type != blank and collections.all.all_types contains block.settings.product_type %}{% assign encoded_navigation_type = block.settings.product_type | url_encode %}{% assign navigation_url = routes.collections_url | append:'/types?q=' | append:encoded_navigation_type %}{% assign navigation_title = navigation_title | default: block.settings.product_type %}{% endif %}
+    {% if navigation_url != blank %}<a class="catalog-nav-link" href="{{ navigation_url }}" data-catalog-nav="selected" {{ block.shopify_attributes }}><span>{{ navigation_title | escape }}</span></a>{% assign navigation_shown = navigation_shown | plus:1 %}
+    {% elsif navigation_title != blank and section.settings.catalog_placeholders %}<span class="catalog-nav-placeholder" aria-disabled="true" title="{{ 'navigation.awaiting_catalog' | t }}" {{ block.shopify_attributes }}>{{ navigation_title | escape }}</span>{% assign navigation_shown = navigation_shown | plus:1 %}{% endif %}
+  {% endif %}{% endfor %}
+{% else %}
+  {% for navigation_collection in collections %}
+    {% if navigation_collection.handle != 'all' and navigation_collection.handle != 'frontpage' and navigation_collection.products_count > 0 %}
+      {% assign navigation_available = navigation_available | plus:1 %}{% assign navigation_url_key = navigation_collection.url | prepend:'|' | append:'|' %}
+      {% unless existing_menu_urls contains navigation_url_key %}{% if navigation_shown < section.settings.catalog_limit %}<a class="catalog-nav-link" href="{{ navigation_collection.url }}" data-catalog-nav="collection"{% if request.page_type == 'collection' and collection.handle == navigation_collection.handle %} aria-current="page"{% endif %}><span>{{ navigation_collection.title | escape }}</span></a>{% assign navigation_shown = navigation_shown | plus:1 %}{% endif %}{% endunless %}
+    {% endif %}
+  {% endfor %}
+  {% if navigation_available == 0 %}
+    {% for navigation_type in collections.all.all_types %}{% if navigation_type != blank %}
+      {% assign navigation_available = navigation_available | plus:1 %}{% assign encoded_navigation_type = navigation_type | url_encode %}{% assign navigation_url = routes.collections_url | append:'/types?q=' | append:encoded_navigation_type %}{% assign navigation_url_key = navigation_url | prepend:'|' | append:'|' %}
+      {% unless existing_menu_urls contains navigation_url_key %}{% if navigation_shown < section.settings.catalog_limit %}<a class="catalog-nav-link" href="{{ navigation_url }}" data-catalog-nav="type"{% if collection.current_type == navigation_type %} aria-current="page"{% endif %}><span>{{ navigation_type | escape }}</span></a>{% assign navigation_shown = navigation_shown | plus:1 %}{% endif %}{% endunless %}
+    {% endif %}{% endfor %}
+  {% endif %}
+  {% if navigation_available == 0 and navigation_product_count == 0 and section.settings.catalog_placeholders %}
+    {% for block in section.blocks %}{% if block.type == 'catalog_category' and block.settings.label != blank and navigation_shown < section.settings.catalog_limit %}<span class="catalog-nav-placeholder" aria-disabled="true" title="{{ 'navigation.awaiting_catalog' | t }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</span>{% assign navigation_shown = navigation_shown | plus:1 %}{% endif %}{% endfor %}
+  {% endif %}
+{% endif %}

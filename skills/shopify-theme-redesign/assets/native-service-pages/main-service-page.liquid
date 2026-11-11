@@ -1,0 +1,10 @@
+<section class="page-space store-content-page service-page scheme-{{ section.settings.color_scheme }}" data-service-page>
+  <div class="container"><div class="service-page__content">
+    <nav class="service-page__breadcrumb" aria-label="{{ 'storefront.breadcrumbs' | t }}"><a href="{{ routes.root_url }}">{{ 'navigation.home' | t }}</a><span aria-hidden="true">/</span><span>{{ page.title | escape }}</span></nav>
+    <header class="service-page__heading"><h1>{{ page.title | escape }}</h1></header>
+    <article class="rte prose service-page__body">{{ page.content }}</article>
+  </div></div>
+</section>
+{% schema %}
+{"name":"Service page","settings":[{"type":"color_scheme","id":"color_scheme","label":"Color scheme","default":"light"}],"presets":[{"name":"Service page"}],"enabled_on":{"templates":["page"]},"limit":1}
+{% endschema %}

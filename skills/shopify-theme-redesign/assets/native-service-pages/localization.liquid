@@ -1,0 +1,29 @@
+{% assign localization_show_country = true %}{% if show_country == false %}{% assign localization_show_country = false %}{% endif %}
+{% assign localization_show_language = true %}{% if show_language == false %}{% assign localization_show_language = false %}{% endif %}
+{% assign localization_is_footer = false %}{% if location == 'footer' %}{% assign localization_is_footer = true %}{% endif %}
+{% assign localization_country_choices = false %}{% assign localization_language_choices = false %}
+{% if localization_show_country and localization.available_countries.size > 1 %}{% assign localization_country_choices = true %}{% endif %}
+{% if localization_show_language and localization.available_languages.size > 1 %}{% assign localization_language_choices = true %}{% endif %}
+{% assign localization_country_visible = localization_country_choices %}{% assign localization_language_visible = localization_language_choices %}
+{% if localization_is_footer %}{% if localization_show_country and localization.country.iso_code != blank %}{% assign localization_country_visible = true %}{% endif %}{% if localization_show_language and localization.language.iso_code != blank %}{% assign localization_language_visible = true %}{% endif %}{% endif %}
+{% assign localization_has_choices = false %}{% if localization_country_choices or localization_language_choices %}{% assign localization_has_choices = true %}{% endif %}
+{% if localization_country_visible or localization_language_visible %}
+{% assign localization_instance = section_id | default: section.id | default: location %}
+{% assign localization_id = 'Localization-' | append: location | append: '-' | append: localization_instance %}
+{% assign localization_country_id = localization_id | append: '-Country' %}{% assign localization_language_id = localization_id | append: '-Language' %}
+{% capture localization_controls %}
+{% if localization_country_visible %}
+<div class="localization-field localization-field--country">
+{% if localization_country_choices %}<label class="localization-field__label" for="{{ localization_country_id | escape }}">{{ 'general.country' | t }}</label><select id="{{ localization_country_id | escape }}" name="country_code">{% for country in localization.available_countries %}<option value="{{ country.iso_code | escape }}"{% if country.iso_code == localization.country.iso_code %} selected{% endif %}>{{ country.name | escape }}{% if country.currency.iso_code != blank %} · {{ country.currency.iso_code | escape }} {{ country.currency.symbol | escape }}{% endif %}</option>{% endfor %}</select>
+{% else %}<span class="localization-field__label">{{ 'general.country' | t }}</span><p class="localization-field__current">{{ localization.country.name | default: localization.country.iso_code | escape }}{% if localization.country.currency.iso_code != blank %} · {{ localization.country.currency.iso_code | escape }} {{ localization.country.currency.symbol | escape }}{% endif %}</p>{% if localization_has_choices %}<input type="hidden" name="country_code" value="{{ localization.country.iso_code | escape }}">{% endif %}{% endif %}
+</div>{% endif %}
+{% if localization_language_visible %}
+<div class="localization-field localization-field--language">
+{% if localization_language_choices %}<label class="localization-field__label" for="{{ localization_language_id | escape }}">{{ 'general.language' | t }}</label><select id="{{ localization_language_id | escape }}" name="language_code">{% for language in localization.available_languages %}<option value="{{ language.iso_code | escape }}"{% if language.iso_code == localization.language.iso_code %} selected{% endif %}>{{ language.endonym_name | escape }}</option>{% endfor %}</select>
+{% else %}<span class="localization-field__label">{{ 'general.language' | t }}</span><p class="localization-field__current">{{ localization.language.endonym_name | default: localization.language.iso_code | escape }}</p>{% if localization_has_choices %}<input type="hidden" name="language_code" value="{{ localization.language.iso_code | escape }}">{% endif %}{% endif %}
+</div>{% endif %}
+{% endcapture %}
+<div class="localization-shell{% if localization_is_footer %} localization-shell--footer{% endif %}" data-native-localization>
+{% if localization_has_choices %}{% form 'localization', id: localization_id, class: 'localization-form' %}{{ localization_controls }}<button class="text-button localization-submit" type="submit">{{ 'general.update' | t }}</button>{% endform %}{% else %}<div class="localization-current">{{ localization_controls }}</div>{% endif %}
+</div>
+{% endif %}

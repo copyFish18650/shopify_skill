@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-service-page",
+      "settings": {
+        "color_scheme": "light"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

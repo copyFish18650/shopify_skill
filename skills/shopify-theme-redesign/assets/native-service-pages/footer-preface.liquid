@@ -1,0 +1,7 @@
+{% assign footer_seen_urls = '' %}{% assign footer_reserved_document_urls = '' %}
+{% assign footer_contact_document_present = false %}{% assign footer_guide_document_present = false %}
+{% if section.settings.show_information %}{% for information_block in section.blocks %}{% if information_block.type == 'information' and information_block.settings.title != blank %}{% if information_block.settings.group == 'service' or information_block.settings.group == 'care' %}
+{% if information_block.settings.kind == 'contact' %}{% assign footer_contact_document_present = true %}{% endif %}{% if information_block.settings.kind == 'size' %}{% assign footer_guide_document_present = true %}{% endif %}
+{% capture reserved_document_url %}{% render 'footer-document-url', document:information_block %}{% endcapture %}{% assign reserved_document_url = reserved_document_url | strip %}
+{% if reserved_document_url != blank %}{% capture footer_url_key %}|{{ reserved_document_url }}|{% endcapture %}{% unless footer_reserved_document_urls contains footer_url_key %}{% assign footer_reserved_document_urls = footer_reserved_document_urls | append: footer_url_key %}{% endunless %}{% endif %}
+{% endif %}{% endif %}{% endfor %}{% endif %}

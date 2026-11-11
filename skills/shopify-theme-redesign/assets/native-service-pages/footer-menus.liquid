@@ -1,0 +1,24 @@
+<div class="footer-menus">
+{% capture footer_menu_items %}{% for link in section.settings.footer_menu.links %}{% if link.url != blank %}{% capture footer_url_key %}|{{ link.url }}|{% endcapture %}{% unless footer_seen_urls contains footer_url_key or footer_reserved_document_urls contains footer_url_key %}<li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>{% assign footer_seen_urls = footer_seen_urls | append: footer_url_key %}{% endunless %}{% endif %}{% endfor %}{% endcapture %}{% assign footer_menu_items = footer_menu_items | strip %}
+{% if footer_menu_items != blank %}<div class="footer-column"><h2>{{ section.settings.footer_menu.title | escape }}</h2><ul>{{ footer_menu_items }}</ul></div>{% endif %}
+{% for block in section.blocks %}{% if block.type == 'menu' %}
+{% capture footer_block_items %}{% for link in block.settings.menu.links %}{% if link.url != blank %}{% capture footer_url_key %}|{{ link.url }}|{% endcapture %}{% unless footer_seen_urls contains footer_url_key or footer_reserved_document_urls contains footer_url_key %}<li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>{% assign footer_seen_urls = footer_seen_urls | append: footer_url_key %}{% endunless %}{% endif %}{% endfor %}{% endcapture %}{% assign footer_block_items = footer_block_items | strip %}
+{% if footer_block_items != blank %}<div class="footer-column" {{ block.shopify_attributes }}><h2>{{ block.settings.heading | default: block.settings.menu.title | escape }}</h2><ul>{{ footer_block_items }}</ul></div>{% endif %}
+{% endif %}{% endfor %}
+{% assign pending_document_count = 0 %}
+{% if section.settings.show_information %}
+{% assign information_groups = 'service,care' | split:',' %}
+{% for information_group in information_groups %}
+{% capture information_items %}{% for block in section.blocks %}{% if block.type == 'information' and block.settings.group == information_group and block.settings.title != blank %}
+{% capture document_url %}{% render 'footer-document-url', document:block %}{% endcapture %}{% assign document_url = document_url | strip %}
+{% if document_url != blank %}{% capture footer_url_key %}|{{ document_url }}|{% endcapture %}{% unless footer_seen_urls contains footer_url_key %}<li {{ block.shopify_attributes }}><a data-policy-kind="{{ block.settings.kind }}" href="{{ document_url | escape }}">{{ block.settings.title | escape }}</a></li>{% assign footer_seen_urls = footer_seen_urls | append: footer_url_key %}{% endunless %}{% else %}{% assign pending_document_count = pending_document_count | plus:1 %}<li {{ block.shopify_attributes }}><span class="footer-document-pending" data-policy-kind="{{ block.settings.kind }}" aria-disabled="true">{{ block.settings.title | escape }}</span></li>{% endif %}
+{% endif %}{% endfor %}{% endcapture %}{% assign information_items = information_items | strip %}
+{% if information_items != blank %}<div class="footer-column"><h2>{% if information_group == 'service' %}Customer Service{% else %}Customer Care{% endif %}</h2><ul>{{ information_items }}</ul></div>{% endif %}
+{% endfor %}{% endif %}
+{% if section.settings.show_policies and section.settings.show_information == false %}
+{% capture published_policy_items %}{% for policy in shop.policies %}{% if policy.body != blank and policy.url != blank %}{% capture footer_url_key %}|{{ policy.url }}|{% endcapture %}{% unless footer_seen_urls contains footer_url_key %}<li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>{% assign footer_seen_urls = footer_seen_urls | append: footer_url_key %}{% endunless %}{% endif %}{% endfor %}{% endcapture %}{% assign published_policy_items = published_policy_items | strip %}
+{% if published_policy_items != blank %}<div class="footer-column"><h2>{{ 'footer.policies' | t }}</h2><ul>{{ published_policy_items }}</ul></div>{% endif %}
+{% endif %}
+{% assign footer_page_now = 'now' | date: '%s' | plus: 0 %}
+{% for block in section.blocks %}{% case block.type %}{% when 'page' %}{% if block.settings.page.url != blank and block.settings.page.published_at != blank %}{% assign footer_page_published = block.settings.page.published_at | date: '%s' | plus: 0 %}{% if footer_page_published <= footer_page_now %}{% capture footer_url_key %}|{{ block.settings.page.url }}|{% endcapture %}{% unless footer_seen_urls contains footer_url_key %}<div class="footer-column" {{ block.shopify_attributes }}><h2>{{ block.settings.heading | default: block.settings.page.title | escape }}</h2><ul><li><a href="{{ block.settings.page.url }}">{{ block.settings.page.title | escape }}</a></li></ul></div>{% assign footer_seen_urls = footer_seen_urls | append: footer_url_key %}{% endunless %}{% endif %}{% endif %}{% when '@app' %}{% render block %}{% endcase %}{% endfor %}
+</div>

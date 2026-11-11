@@ -1,0 +1,119 @@
+{
+  "profile_id": "user-confirmed-personal-us-retail-20261028",
+  "scope": "Defaults expressly adopted by this skill's owner for future online retail themes. These are merchant choices, not universal Shopify rules or verified settings of every future store. Later user instructions and the actual target store's confirmed rules take precedence. No backend changes are authorized by this profile.",
+  "evidence": {
+    "return_and_cancellation": "User-provided Shopify Default rules screenshot and explicit adoption on 2026-10-28.",
+    "other_operating_rules": "User explicitly adopted the operating rules previously reviewed at https://gannontaneja.online/, except conflicting screenshot rules and non-transferable identity, privacy and legal facts.",
+    "conflict_resolved": "15-minute cancellation replaces the reference site's 1-hour cancellation everywhere.",
+    "public_contact_address": "User explicitly requested on 2026-10-28 that each store footer address be filled from that store operator document information; supersedes the earlier withheld-address default."
+  },
+  "rules": {
+    "returns_enabled": true,
+    "return_window_days": 30,
+    "return_window_unit": "calendar_days",
+    "return_window_starts_from": "delivery_of_each_item",
+    "extend_for_weekends_or_holidays": false,
+    "eligible_return_shipping": "free_merchant_paid",
+    "return_shipping_scope": "Online returns; the screenshot explicitly notes that this shipping setting does not apply to POS returns.",
+    "restocking_fee": 0,
+    "return_method": "mail_after_request_and_approval",
+    "return_eligibility": "Unworn or unused, in received condition, with tags and original packaging, and proof of purchase. Do not invent extra category exclusions.",
+    "damaged_incorrect_or_defective": "Report to support; merchant covers reasonable return shipping costs for verified issues.",
+    "cancellations_enabled": true,
+    "cancellation_window_minutes": 15,
+    "cancellation_applies_to": "unfulfilled_items",
+    "cancellation_means": "Eligibility to request cancellation, not a claim that payment is automatically refunded or all items remain unfulfilled for 15 minutes.",
+    "final_sale_mode": "collections",
+    "final_sale_collections": [],
+    "final_sale_note": "No collection is selected in the supplied screenshot. Do not infer a final-sale exclusion from a source site's sale label or discounted price. Actual configured exclusions require explicit evidence and matching disclosure.",
+    "rule_changes_apply_to": "purchases_after_activation_or_update_without_retroactively_changing_existing_order_terms",
+    "refund_initiation_business_days_after_approval": 5,
+    "refund_method": "original_payment_method",
+    "bank_posting": "Additional provider or bank processing time may apply; no fixed receipt date promised.",
+    "exchanges": "Contact support to request an eligible return and discuss exchange options; no automatic or guaranteed replacement stock.",
+    "shipping_destinations": [
+      "United States"
+    ],
+    "standard_shipping_fee": 0,
+    "processing_business_days": [
+      1,
+      3
+    ],
+    "transit_business_days_after_dispatch": [
+      7,
+      15
+    ],
+    "total_delivery_estimate_business_days": [
+      8,
+      18
+    ],
+    "business_days_exclude": [
+      "weekends",
+      "holidays"
+    ],
+    "tracking_update_hours_after_dispatch": [
+      24,
+      48
+    ],
+    "tracking_method": "shipping_confirmation_email_with_tracking_details",
+    "shipping_estimates_are_guarantees": false,
+    "taxes_and_total": "Applicable charges and payable total are displayed at checkout; do not invent a tax rate or promise tax-free shopping.",
+    "support_days": "Monday-Friday",
+    "support_hours": "09:00-18:00",
+    "support_timezone": "MST (UTC-7)",
+    "support_response_target": "Aim to reply within 24 hours on business days."
+  },
+  "operator_and_contact": {
+    "business_type": "individual_operator",
+    "identity_scope": "Each new store uses exactly its own current-task merchant dataset. Never fall back to a previous store or historical example. Continuing the same store may reuse only that store's confirmed dataset. Missing identity stays pending; do not fabricate a unique identity.",
+    "task_binding": "Bind permitted public fields to the current reference/target store and unique work/output directory. Keep any sanitized per-project record outside the shared skill; never persist raw credential-bearing input packets.",
+    "operator_name_source": "Use the current task's confirmed full name, or firstName plus lastName. Never promote an example person's identity into every future store or invent a company suffix.",
+    "customer_contact_method": "native_shopify_contact_form",
+    "use_supplied_account_email_as_support": false,
+    "public_address_placeholder": true,
+    "public_email_placeholder": false,
+    "contact_delivery_note": "The store owner must configure a working contact-form recipient in Shopify. A visible form does not prove successful mail delivery; never silently use account credentials as the recipient.",
+    "sensitive_input_handling": "Ignore passwords, snCode and unexplained identifiers for public content. Do not store credentials or identity numbers in this skill, themes, CSVs or delivery reports. Current-store name and authorized document address may enter that store theme and necessary project records, never shared skill defaults or product CSVs.",
+    "publish_current_task_document_address": true,
+    "operator_address_source": "Use only this store current-task document address or document-derived text: address/address2, city, state, zipCode, country. Format existing fields consistently; never borrow a prior store address or invent missing parts.",
+    "public_address_setting": "Footer operator_address is the shared editable source for the public footer and bundled Contact Information / Legal Notice. Native backend policies and Pages remain separate records."
+  },
+  "privacy_reference": {
+    "url": "https://gannontaneja.online/policies/privacy-policy",
+    "use": "Use the reviewed section structure and general subject matter as the requested reference, with original adapted wording. Replace the source identity and contact channels. Do not claim unknown advertising cookies, retention, apps or sharing as verified store practices, and do not copy the full third-party policy verbatim.",
+    "contact_channel": "on-site contact form",
+    "review_status": "Store-specific optional tracking, data sharing and related disclosures still require a target-store configuration check."
+  },
+  "remaining_required_facts": {
+    "operator_name": "Fill from the current task's actual operator name; #待填入 only if it was not provided.",
+    "privacy_practices": "#待填入: actual optional tracking/cookies, apps, sharing and any necessary retention or regional details. Use a verified target-store privacy policy where appropriate.",
+    "legal_details": "#待填入: genuinely required legal or public-contact disclosures unresolved for this operator and markets. The current document address can be published as requested; do not invent courts, arbitration or registration facts.",
+    "operator_address": "Fill from the current task operator document address. Mark only missing or unreadable details #待填入 in the shared Footer address setting; do not reuse history."
+  },
+  "automatic_or_omit": {
+    "store_name_and_website": "Read current shop.name and shop.url; never use the reference store identity.",
+    "payment_methods_and_currency": "Use actual checkout display and enabled Shopify methods; no invented payment-provider list.",
+    "return_destination": "Provide with approved-return instructions. A public fixed return address is optional; never substitute the business address or invent one.",
+    "phone_social_brand_history_certifications_warranty": "Omit unsupported optional claims and links instead of creating a #待填入 line for each.",
+    "size_and_care": "Adapt to actual merchandise and verified source details. Give useful general guidance where exact measurements are unavailable; do not fabricate size conversions or material capabilities.",
+    "privacy_and_legal": "Do not treat these as optional omissions; keep useful section structure and clearly mark the unresolved necessary details.",
+    "account_email": "Do not publish as a support address, mailto link or hidden custom recipient. Use the native contact form with a separately configured backend recipient; no empty public email field.",
+    "public_contact_address": "Use the current-task document address through the shared Footer operator_address setting. Missing parts stay #待填入; not automatically the approved return destination."
+  },
+  "documents": {
+    "about": "<p>Explore our product selection and compare the details and available options to find what suits your everyday needs. Our store can help with product questions, orders, deliveries, and eligible returns.</p><p>For our current business identity and contact details, see Contact Information in the footer.</p>",
+    "payment": "<p>Available payment methods, currency, applicable charges, and the final payable total are shown at checkout. Review these details before placing your order.</p><p>Approved return refunds are initiated to the original payment method within 5 business days after approval. Your bank or payment provider may need additional time to post the funds.</p><p>For payment questions, contact us using the details in Contact Information and include your order reference.</p>",
+    "size": "<p>Check the exact item's listed options, dimensions, and any supplied size or fit guidance before ordering. Sizing and measurements can differ between styles and product ranges.</p><p>Follow the care instructions supplied with the selected item. If a measurement, material, compatibility, or care detail is missing, contact us before relying on an assumption.</p><p>For an eligible size or preference return, contact support within 30 calendar days after the item's delivery. See Return & Refund Policy for the conditions and process.</p>",
+    "tracking": "<p>After dispatch, look for the shipping confirmation email containing your tracking details. Use the link in that email to follow the parcel.</p><p>Carrier tracking can take 24 to 48 hours to update after dispatch. If you cannot find the email or need help with a delay, contact support with your order reference.</p><p>If a parcel is marked delivered but is missing, check the delivery location, household members, and carrier information, then contact us if it remains unresolved.</p>",
+    "contact": "<p>We can help with product questions, order updates, delivery issues, and eligible returns or cancellations. Please use this store's on-site contact form.</p><p>For an existing order, include your order reference and a clear description of the issue. Include photographs when reporting a damaged or incorrect item.</p><p>Customer support hours are Monday to Friday, 9:00 AM to 6:00 PM MST (UTC-7). We aim to reply within 24 hours on business days.</p>",
+    "privacy_choices": "<p>Use our on-site contact form for privacy questions or requests concerning your information. We may ask for information needed to verify and process a request.</p><p>See Privacy Policy for the store's actual data practices, available rights, and applicable controls. Where privacy controls are available on this site, use them to manage the choices they support.</p>",
+    "privacy": "<h3>Information for shopping</h3><p>When you order or contact our store, the details you supply are used to handle purchases, delivery, and support. Shopify provides the storefront and checkout functions.</p><h3>Service providers</h3><p>Necessary order details are processed through services used for payment and fulfillment. Any additional tools and sharing depend on this store's enabled configuration.</p><h3>Cookies and optional tools</h3><p>Actual analytics, advertising, cookie choices, data sharing, and any additional required privacy details: <strong>#待填入</strong></p><h3>Keeping records</h3><p>Records are kept as needed for transactions, support, and applicable obligations. Deletion requests are assessed against those obligations.</p><h3>Privacy requests</h3><p>Use our on-site contact form for questions or requests about your information. Verification may be needed before we respond.</p><h3>Updates and operator</h3><p>Review this notice when the store's practices change. Operator information is under Contact Information.</p>",
+    "returns": "<h3>Return eligibility</h3><p>Request an eligible return within 30 calendar days after delivery of each item. The standard window is not extended for weekends or holidays. Items must be unworn or unused, in their received condition, with tags, original packaging, and proof of purchase.</p><h3>Request and return shipping</h3><p>Contact support before mailing an item. Once approved, we provide the return destination and merchant-paid shipping instructions. Eligible return shipping is free. No restocking fee is charged.</p><h3>Problems and exchanges</h3><p>Report damaged, defective, or incorrect items to support. We cover reasonable return shipping for verified issues. Contact us about eligible size or preference returns and exchange options.</p><h3>Cancellations and refunds</h3><p>You may request cancellation of unfulfilled items within 15 minutes of placing the order. After we receive and inspect a return, we notify you of the decision. Approved refunds are initiated to the original payment method within 5 business days; bank processing can take longer.</p><p>These standard terms do not limit mandatory consumer rights.</p>",
+    "shipping": "<h3>Destination and charges</h3><p>We currently ship within the United States. Standard shipping is free. Applicable taxes and the payable total are shown at checkout before payment.</p><h3>Processing and delivery estimates</h3><p>Processing takes 1 to 3 business days. Estimated transit is 7 to 15 business days after dispatch, giving an estimated total of 8 to 18 business days. Business days exclude weekends and holidays. These are estimates; carrier delays can occur.</p><h3>Tracking and delivery help</h3><p>A shipping confirmation email provides tracking details after dispatch. Allow 24 to 48 hours for tracking updates. If delivery information is unclear or a delivered parcel is missing, check the carrier details and delivery location, then contact us with your order reference for help.</p>",
+    "after_sales": "<h3>Help with an item or order</h3><p>Contact support with your order reference, selected item and options, and a description of the problem. For damage, defects, incorrect items, or missing contents, keep the item and packaging and include photographs when available.</p><p>We cover reasonable return shipping for verified damaged, defective, or incorrect items. Contact us before mailing anything so we can provide the correct instructions.</p><h3>Returns and refunds</h3><p>Eligible returns can be requested within 30 calendar days after each item's delivery. Return shipping is free, with no restocking fee. Approved refunds are initiated to the original payment method within 5 business days; the bank may take additional time.</p><p>Use Return & Refund Policy for eligibility and Contact Information for support details. These standard terms do not limit mandatory consumer rights.</p>",
+    "terms": "<h3>Using this store</h3><p>Use this website and its services lawfully. Review the exact product description, options, availability, currency, and payable total before placing an order. Website information and prices may be updated; the terms applicable to an existing order are not retroactively replaced by a later policy update.</p><h3>Orders, returns, and delivery</h3><p>Unfulfilled items are eligible for a cancellation request within 15 minutes after ordering. Eligible returns can be requested within 30 calendar days after each item's delivery, with free return shipping and no restocking fee. Approved refunds are initiated to the original payment method within 5 business days.</p><p>Shipping Policy, Return & Refund Policy, and Privacy Policy provide the corresponding details. Standard shipping is currently free within the United States.</p><h3>Operator and applicable terms</h3><p>See Contact Information for the operator's identity and contact details, and Legal Notice for store-specific legal information. Mandatory consumer rights are unaffected.</p>",
+    "contact_information": "<p>Individual operator: [[operator_name]]</p><p>For product, order, return, or privacy assistance, please use our on-site contact form.</p><p>Support hours: Monday to Friday, 9:00 AM to 6:00 PM MST (UTC-7). We aim to reply within 24 hours on business days.</p><p>Contact us for approved-return shipping instructions before sending an item. The correct return destination is provided with those instructions.</p>",
+    "legal": "<h3>Website operator</h3><p>The operating business name and contact details are listed in Contact Information.</p><h3>Store-specific legal information</h3><p>Applicable law, dispute arrangements, and any required registration or regional disclosures: <strong>#待填入</strong></p><h3>Content and third-party material</h3><p>Product names, trademarks, and media may belong to their respective owners. Any commercial affiliation, license, or rights claim must reflect the actual arrangement. No official brand relationship is implied merely by listing merchandise.</p>",
+    "sale_terms": "<h3>Before ordering</h3><p>Check the selected item, options, quantity, currency, delivery information, and payable total. Available payment methods and applicable charges are shown at checkout.</p><h3>Delivery and changes</h3><p>We currently ship within the United States with free standard shipping. Processing is 1 to 3 business days; transit is estimated at 7 to 15 business days after dispatch. You may request cancellation of unfulfilled items within 15 minutes of ordering.</p><h3>After purchase</h3><p>Eligible returns can be requested within 30 calendar days after each item's delivery. Return shipping is free and no restocking fee is charged. Approved refunds are initiated to the original payment method within 5 business days. Review Shipping Policy and Return & Refund Policy for the full process.</p><p>Operator details are in Contact Information. Applicable legal details are in Legal Notice; mandatory consumer rights are unaffected.</p>"
+  }
+}
